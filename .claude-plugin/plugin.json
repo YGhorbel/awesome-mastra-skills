@@ -1,0 +1,8 @@
+{
+  "name": "mastra-skills",
+  "description": "Feature-by-feature skills for building, testing, and shipping AI agents and workflows with the Mastra TypeScript framework.",
+  "version": "1.0.0",
+  "author": { "name": "Yassine Ghorbel" },
+  "license": "Apache-2.0",
+  "keywords": ["agent-skills", "claude-skills", "mastra", "ai-agents", "workflows", "typescript", "rag", "mcp"]
+}

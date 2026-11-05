@@ -1,0 +1,14 @@
+{
+  "name": "mastra-skills",
+  "owner": { "name": "Yassine Ghorbel" },
+  "description": "Mastra framework skills: agents, tools, workflows, memory, RAG, harness, sandboxes, MCP, server, evals, observability, deployment, and Mastra Platform.",
+  "plugins": [
+    {
+      "name": "mastra-skills",
+      "source": "./",
+      "description": "Full catalog of Mastra skills, one per feature area, plus a router skill and an end-to-end build playbook.",
+      "category": "development",
+      "keywords": ["agent-skills", "mastra", "ai-agents", "typescript"]
+    }
+  ]
+}

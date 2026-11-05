@@ -1,40 +1,85 @@
 # Mastra Skills
 
-**Feature-by-feature [Agent Skills](https://agentskills.io) for building, testing, and shipping AI agents and workflows with [Mastra](https://mastra.ai), the TypeScript AI framework.**
+**Feature-by-feature [Agent Skills](https://agentskills.io) for building, testing, and shipping AI agents with [Mastra](https://mastra.ai), the TypeScript AI framework.**
 
-Each skill covers one Mastra feature area: when to use it, the mental model, a step-by-step workflow, common mistakes, and exact APIs with working examples taken from the current Mastra docs. A router skill (`mastra-guide`) sends any request to the right skill, and `mastra-build-playbook` walks a project from idea to production.
+## What this project is
 
-Every skill starts by verifying the API against the installed package docs or the live docs, because Mastra changes quickly and model training data goes stale.
+Mastra Skills is a set of 47 Agent Skills for the Mastra framework. Each skill covers one feature area, such as agents, tools, workflows, memory, RAG, evals, or deployment. A skill explains when to use the feature, the core workflow, common mistakes, and the exact APIs, with examples taken from the current Mastra docs.
 
----
+The router skill `mastra-guide` sends any request to the right skill, and `mastra-build-playbook` walks a project from idea to production.
 
-## Install
+## Who should use it
+
+- Developers building agents, workflows, or AI backends in TypeScript with Mastra
+- Anyone using an AI coding assistant (Claude Code and other Agent Skills-compatible tools) on a Mastra project
+- Teams evaluating Mastra who want a structured reference for its features
+
+This repo is not for Python projects or other frameworks.
+
+## What problems it solves
+
+- **Outdated or invented APIs.** Assistants often guess Mastra APIs from old training data. Each skill tells the assistant to check the current docs first.
+- **Fast-moving docs.** Mastra's docs are large and change between releases. The skills map each feature to the docs pages it comes from, so updates are easy to trace.
+- **Finding the right feature.** The routing table in `mastra-guide` maps a goal, like "give my agent a database," to the skill that covers it.
+- **Repeated setup mistakes.** Common errors (ESM setup, model string format, tool signatures, env vars) are covered in one place.
+- **Loading only what you need.** One skill per feature means an assistant loads the relevant instructions, not a single large document.
+
+## Table of contents
+
+- [What this project is](#what-this-project-is)
+- [Who should use it](#who-should-use-it)
+- [What problems it solves](#what-problems-it-solves)
+- [Table of contents](#table-of-contents)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [How a skill is built](#how-a-skill-is-built)
+- [Catalog](#catalog)
+- [Repository structure](#repository-structure)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
+
+## Installation
+
+Pick one of these methods.
 
 ### Claude Code (plugin marketplace)
 
 ```
-/plugin marketplace add YOUR_GITHUB_USER/Mastra-skills
+/plugin marketplace add YGhorbel/awesome-mastra-skills
 /plugin install mastra-skills@mastra-skills
 ```
 
 ### Any agent that supports the skills CLI
 
 ```bash
-npx skills add YOUR_GITHUB_USER/Mastra-skills
+npx skills add YGhorbel/awesome-mastra-skills
 ```
 
 ### Manual
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USER/Mastra-skills.git
-# Claude Code: copy or symlink skills/* into ~/.claude/skills/ or .claude/skills/
+git clone https://github.com/YGhorbel/awesome-mastra-skills.git
 ```
 
-Replace `YOUR_GITHUB_USER` with the account that hosts this repo. Skills load on demand: only each skill's name and description sit in context until it is needed.
+Then copy or symlink `skills/*` into `~/.claude/skills/` (or your agent's skills folder). Skills load on demand, so only each skill's name and description sit in context until it is needed.
 
 ### Use alongside the official Mastra skill
 
-Mastra publishes an official skill at [mastra-ai/skills](https://github.com/mastra-ai/skills) (`npx skills add mastra-ai/skills`). It is one broad skill focused on looking up current docs, the `mastra api` CLI, and Mastra Factory. This repo is complementary: it splits Mastra into focused skills with frameworks, workflows, failure patterns, and checklists per feature. Installing both works well.
+Mastra publishes an official skill at [mastra-ai/skills](https://github.com/mastra-ai/skills) (`npx skills add mastra-ai/skills`). It is one broad skill covering current docs lookup, the `mastra api` CLI, and Mastra Factory. This repo splits Mastra into focused per-feature skills. The two work well together.
+
+## Contributing
+
+Contributions are welcome, especially fixes for outdated APIs, docs that contradict each other, and better examples.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide. The short version:
+
+```bash
+python3 -m pip install pyyaml
+python3 scripts/validate_skills.py
+python3 scripts/generate_catalog.py --write
+```
+
+Open an issue or a pull request on [GitHub](https://github.com/YGhorbel/awesome-mastra-skills).
 
 ---
 
@@ -172,21 +217,10 @@ skills/             one folder per skill
 scripts/
   validate_skills.py    structure and frontmatter checks
   generate_catalog.py   regenerates the catalog above
+CONTRIBUTING.md     how to contribute
 SKILL_AUTHORING.md  conventions every skill follows
 MAPPING.md          skill to Mastra docs source map
 ```
-
-## Contributing and maintenance
-
-1. Edit or add a skill following [SKILL_AUTHORING.md](SKILL_AUTHORING.md).
-2. Validate and regenerate the catalog:
-
-   ```bash
-   python3 scripts/validate_skills.py
-   python3 scripts/generate_catalog.py --write
-   ```
-
-3. When Mastra updates a docs page, find the affected skills in [MAPPING.md](MAPPING.md) and refresh them from `https://mastra.ai/<path>.md`.
 
 ## Acknowledgments
 

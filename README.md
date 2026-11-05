@@ -232,4 +232,6 @@ Not affiliated with or endorsed by Mastra.
 
 ## License
 
-[Apache-2.0](LICENSE)
+This project is licensed under the [Apache License 2.0](LICENSE). You can use, modify, and redistribute the skills, including in commercial projects, as long as you keep the licence and attribution notices.
+
+Contributions are accepted under the same licence (see [CONTRIBUTING.md](CONTRIBUTING.md)).
